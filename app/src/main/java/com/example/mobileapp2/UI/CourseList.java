@@ -27,6 +27,7 @@ public class CourseList extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         repository= new Repository(getApplication());
         List<Course> allCourses=repository.getAllCourses();
+        courseAdapter.setCourses(allCourses);
 
 
     }

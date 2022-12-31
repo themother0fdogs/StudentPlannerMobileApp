@@ -29,16 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       Course course=new Course(0, "name", "start", "end", "progress", "instructor", "phone", "email", 1);
+       /*Course course=new Course(0, "name", "start", "end", "progress", "instructor", "phone", "email", 1);
         Repository repository = new Repository(getApplication());
-        repository.insert(course);
+        repository.insert(course);*/
 
 
         //on click edit button
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, TermsList.class);
+                Intent intent=new Intent(MainActivity.this, CourseList.class);
                 startActivity(intent);
             }
         });

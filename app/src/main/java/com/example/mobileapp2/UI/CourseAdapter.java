@@ -37,6 +37,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
                     intent.putExtra("Instructor Phone#: ", current.getInstructorPhone());
                     intent.putExtra("Instructor Email: ", current.getInstructorEmail());
                     intent.putExtra("Term Id: ", current.getTermID());
+                    context.startActivity(intent);
                 }
             });
         }
@@ -54,7 +55,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     @NonNull
     @Override
     public CourseAdapter.CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView= mInflater.inflate(R.layout.activity_course_details, parent, false);
+        View itemView= mInflater.inflate(R.layout.course_list_item, parent, false);
         return new CourseViewHolder(itemView);
     }
 

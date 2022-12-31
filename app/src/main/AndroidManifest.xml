@@ -7,20 +7,23 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="Student Planner Mobile App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MobileApp2"
         tools:targetApi="31" >
         <activity
             android:name=".UI.TermsList"
-            android:exported="false" >
+            android:label="Terms List"
+            android:exported="false"
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".UI.TermDetails"
+            android:label="Details of Term"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -28,6 +31,7 @@
         </activity>
         <activity
             android:name=".UI.CourseList"
+            android:label="List of Courses"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
@@ -35,6 +39,7 @@
         </activity>
         <activity
             android:name=".UI.CourseDetails"
+            android:label="Details of Course"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"
