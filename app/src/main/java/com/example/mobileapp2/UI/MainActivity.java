@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         repository.insert(term);*/
 
 
-
-       /*Course course=new Course(0, "name", "start", "end", "progress", "instructor", "phone", "email", 1);
+        //insert course
+       /*Course course=new Course(0, "Mobile App Development", "12/23/22", "01/31/23", "in-progress", "Ruiz", "(385) 428-2843", "juan.ruiz@wgu.edu", 1);
         Repository repository = new Repository(getApplication());
         repository.insert(course);*/
 
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this, CourseList.class);
+                Intent intent=new Intent(MainActivity.this, TermsList.class);
                 startActivity(intent);
             }
         });

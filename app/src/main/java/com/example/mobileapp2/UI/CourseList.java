@@ -10,10 +10,12 @@ import com.example.mobileapp2.Database.Repository;
 import com.example.mobileapp2.Entities.Course;
 import com.example.mobileapp2.R;
 
+
 import java.util.List;
 
 public class CourseList extends AppCompatActivity {
     private Repository repository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,6 @@ public class CourseList extends AppCompatActivity {
         repository= new Repository(getApplication());
         List<Course> allCourses=repository.getAllCourses();
         courseAdapter.setCourses(allCourses);
-
 
     }
 }
