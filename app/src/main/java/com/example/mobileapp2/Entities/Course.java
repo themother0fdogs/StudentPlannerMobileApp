@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="Courses")
+
 public class Course {
     @PrimaryKey(autoGenerate = true)
     private int courseID;
@@ -18,7 +19,10 @@ public class Course {
 
     private int termID;
 
-    public Course(int courseID, String courseName, String courseStart, String courseEnd, String progressStatus, String instructorName, String instructorPhone, String instructorEmail, int termID) {
+    private String optionalNotes;
+
+
+    public Course(int courseID, String courseName, String courseStart, String courseEnd, String progressStatus, String instructorName, String instructorPhone, String instructorEmail, int termID, String optionalNotes) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseStart = courseStart;
@@ -28,6 +32,7 @@ public class Course {
         this.instructorPhone = instructorPhone;
         this.instructorEmail = instructorEmail;
         this.termID = termID;
+        this.optionalNotes = optionalNotes;
     }
 
     public Course() {
@@ -57,9 +62,7 @@ public class Course {
         this.courseStart = courseStart;
     }
 
-    public String getCourseEnd() {
-        return courseEnd;
-    }
+    public String getCourseEnd() {return courseEnd;}
 
     public void setCourseEnd(String courseEnd) {
         this.courseEnd = courseEnd;
@@ -104,4 +107,18 @@ public class Course {
     public void setTermID(int termID) {
         this.termID = termID;
     }
+
+    public String getOptionalNotes() {
+        return optionalNotes;
+    }
+
+    public void setOptionalNotes(String optionalNotes) {
+        this.optionalNotes = optionalNotes;
+    }
+
+    @Override
+    public String toString(){
+        return progressStatus;
+    }
+
 }

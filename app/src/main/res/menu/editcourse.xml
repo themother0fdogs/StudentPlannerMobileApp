@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/addassessment"
+        android:title="@string/add_assessment" />
+
+    <item
+        android:id="@+id/deletecourse"
+        android:title="@string/delete_course" />
+
+    <item
+        android:id="@+id/notifystart"
+        android:title="@string/notify_start" />
+    <item
+        android:id="@+id/notifyend"
+        android:title="@string/notify_end" />
+
+    <item
+        android:id="@+id/share"
+        android:title="Share Notes" />
+
+
+</menu>

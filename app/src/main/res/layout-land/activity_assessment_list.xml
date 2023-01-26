@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CD314963"
-    tools:context=".UI.CourseList">
+    tools:context=".UI.AssessmentList">
 
     <ScrollView
-        android:id="@+id/scrollView7"
+        android:id="@+id/scrollView6"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="47dp"
             android:background="@color/cardview_dark_background"
-            android:text="Courses"
+            android:text="Assessments"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30sp"
@@ -35,11 +36,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
+
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/allcourseRecyclerview"
+            android:id="@+id/allAssessmentsRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

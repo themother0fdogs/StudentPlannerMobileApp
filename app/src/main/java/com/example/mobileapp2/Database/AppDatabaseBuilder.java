@@ -6,15 +6,18 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.mobileapp2.DAO.AssessmentDAO;
 import com.example.mobileapp2.DAO.CourseDAO;
 import com.example.mobileapp2.DAO.TermDAO;
+import com.example.mobileapp2.Entities.Assessment;
 import com.example.mobileapp2.Entities.Course;
 import com.example.mobileapp2.Entities.Term;
 
-@Database(entities = {Course.class, Term.class}, version=1, exportSchema = false)
+@Database(entities = {Course.class, Term.class, Assessment.class}, version=1, exportSchema = false)
 public abstract class AppDatabaseBuilder extends RoomDatabase {
     public abstract TermDAO termDAO();
     public abstract CourseDAO courseDAO();
+    public abstract AssessmentDAO assessmentDAO();
     private static volatile AppDatabaseBuilder INSTANCE;
     static AppDatabaseBuilder getDatabase(final Context context){
         if(INSTANCE ==null){
@@ -28,5 +31,4 @@ public abstract class AppDatabaseBuilder extends RoomDatabase {
         }
         return INSTANCE;
     }
-
 }

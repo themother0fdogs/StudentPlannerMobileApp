@@ -10,12 +10,10 @@ import com.example.mobileapp2.Database.Repository;
 import com.example.mobileapp2.Entities.Course;
 import com.example.mobileapp2.R;
 
-
 import java.util.List;
 
 public class CourseList extends AppCompatActivity {
     private Repository repository;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,13 +21,12 @@ public class CourseList extends AppCompatActivity {
         setContentView(R.layout.activity_course_list);
 
         //recyclerview
-        RecyclerView recyclerView=findViewById(R.id.courseRecyclerview);
-        final CourseAdapter courseAdapter = new CourseAdapter(this);
+        RecyclerView recyclerView = findViewById(R.id.allcourseRecyclerview);
+        repository = new Repository(getApplication());
+        final AllCourseAdapter courseAdapter = new AllCourseAdapter(this);
         recyclerView.setAdapter(courseAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        repository= new Repository(getApplication());
-        List<Course> allCourses=repository.getAllCourses();
+        List<Course> allCourses = repository.getAllCourses();
         courseAdapter.setCourses(allCourses);
-
     }
 }

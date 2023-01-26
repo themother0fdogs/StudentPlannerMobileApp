@@ -14,30 +14,32 @@ import com.example.mobileapp2.Entities.Course;
 import com.example.mobileapp2.R;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseViewHolder> {
+
     class CourseViewHolder extends RecyclerView.ViewHolder {
         private final TextView courseItemView;
+
         private CourseViewHolder(View itemview){
             super(itemview);
             courseItemView= itemview.findViewById(R.id.textViewcourselist);
             itemview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position= getAdapterPosition();
-                    final Course current = mCourses.get(position);
-                    Intent intent = new Intent(context,CourseDetails.class);
-                    intent.putExtra("courseID", current.getCourseID());
-                    intent.putExtra("course", current.getCourseName());
-                    intent.putExtra("start", current.getCourseStart());
-                    intent.putExtra("end", current.getCourseEnd());
-                    intent.putExtra("progress", current.getProgressStatus());
-                    intent.putExtra("instructor", current.getInstructorName());
-                    intent.putExtra("phone", current.getInstructorPhone());
-                    intent.putExtra("email", current.getInstructorEmail());
-                    intent.putExtra("termID", current.getTermID());
-                    context.startActivity(intent);
+                        int position = getAdapterPosition();
+                        final Course current = mCourses.get(position);
+                        Intent intent = new Intent(context, CourseDetails.class);
+                        intent.putExtra("courseID", current.getCourseID());
+                        intent.putExtra("course", current.getCourseName());
+                        intent.putExtra("start", current.getCourseStart());
+                        intent.putExtra("end", current.getCourseEnd());
+                        intent.putExtra("progress", current.getProgressStatus());
+                        intent.putExtra("instructor", current.getInstructorName());
+                        intent.putExtra("phone", current.getInstructorPhone());
+                        intent.putExtra("email", current.getInstructorEmail());
+                        intent.putExtra("termID", current.getTermID());
+                        intent.putExtra("notes", current.getOptionalNotes());
+                        context.startActivity(intent);
                 }
             });
         }
@@ -55,7 +57,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
     @NonNull
     @Override
     public CourseAdapter.CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView= mInflater.inflate(R.layout.course_list_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.course_list_item, parent, false);
         return new CourseViewHolder(itemView);
     }
 
@@ -65,10 +67,10 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
             Course current = mCourses.get(position);
             String name= current.getCourseName();
             holder.courseItemView.setText(name);
-
         }
         else{
-            holder.courseItemView.setText("No Information");
+            String noInfo = "No Course(s) Registered with Term";
+            holder.courseItemView.setText(noInfo);
         }
     }
 
@@ -81,6 +83,5 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
         mCourses=courses;
         notifyDataSetChanged();
     }
-
 
 }
