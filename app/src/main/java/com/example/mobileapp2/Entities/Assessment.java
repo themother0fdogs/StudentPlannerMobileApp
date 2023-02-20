@@ -14,14 +14,17 @@ public class Assessment {
 
     private int courseID;
 
+    int userID;
 
-    public Assessment(int assessmentID, String assessmentName, String assessmentType, String assessmentStart, String assessmentEnd, int courseID) {
+
+    public Assessment(int assessmentID, String assessmentName, String assessmentType, String assessmentStart, String assessmentEnd, int courseID, int userID) {
         this.assessmentID = assessmentID;
         this.assessmentName = assessmentName;
         this.assessmentType = assessmentType;
         this.assessmentStart = assessmentStart;
         this.assessmentEnd = assessmentEnd;
         this.courseID = courseID;
+        this.userID = userID;
     }
 
     public Assessment() {
@@ -73,6 +76,14 @@ public class Assessment {
 
     public void setCourseID(int courseID) {
         this.courseID = courseID;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     @Override

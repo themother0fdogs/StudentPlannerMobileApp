@@ -12,12 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mobileapp2.Entities.Course;
 import com.example.mobileapp2.R;
 
-import java.util.List;
-
+import java.util.ArrayList;
 
 public class AllCourseAdapter extends RecyclerView.Adapter<AllCourseAdapter.CourseViewHolder> {
+    private ArrayList<Course> courseArrayList;
+    public AllCourseAdapter(ArrayList<Course> courseArrayList, Context context){
+        this.courseArrayList = courseArrayList;
+    }
 
-    class CourseViewHolder extends RecyclerView.ViewHolder {
+    public static class CourseViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView courseItemView;
         private final TextView startItemView;
@@ -36,38 +39,37 @@ public class AllCourseAdapter extends RecyclerView.Adapter<AllCourseAdapter.Cour
                 }
             });
         }
-
     }
-    private List<Course> mCourses;
-    private final LayoutInflater mInflater;
-    public AllCourseAdapter(Context context){
-        mInflater = LayoutInflater.from(context);
+
+    public void searchResults (ArrayList<Course> results){
+        courseArrayList = results;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
 
     public AllCourseAdapter.CourseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.all_course_list_item, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_course_list_item, parent, false);
         return new CourseViewHolder(itemView);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull AllCourseAdapter.CourseViewHolder holder, int position) {
 
-                if (mCourses != null) {
+        if (courseArrayList != null) {
+                Course current = courseArrayList.get(position);
+                String name = current.getCourseName();
+                String start = current.getCourseStart();
+                String end = current.getCourseEnd();
 
-                    Course current = mCourses.get(position);
-                    String name = current.getCourseName();
-                    String start = current.getCourseStart();
-                    String end = current.getCourseEnd();
+                holder.courseItemView.setText(name);
+                holder.startItemView.setText(start);
+                holder.endItemView.setText(end);
+            }
 
-                    holder.courseItemView.setText(name);
-                    holder.startItemView.setText(start);
-                    holder.endItemView.setText(end);
-
-
-                } else {
+             else {
                     String noInfo = "No Information";
                     holder.courseItemView.setText(noInfo);
                     holder.startItemView.setText(noInfo);
@@ -75,14 +77,10 @@ public class AllCourseAdapter extends RecyclerView.Adapter<AllCourseAdapter.Cour
                 }
     }
 
+
     @Override
     public int getItemCount() {
-        return mCourses.size();
-    }
-
-    public void setCourses (List<Course> courses){
-        mCourses=courses;
-        notifyDataSetChanged();
+        return courseArrayList.size();
     }
 
 }

@@ -12,11 +12,14 @@ public class Term {
     private String termStart;
     private String termEnd;
 
-    public Term(int termID, String termName, String termStart, String termEnd) {
+    private int userID;
+
+    public Term(int termID, String termName, String termStart, String termEnd, int userID) {
         this.termID = termID;
         this.termName = termName;
         this.termStart = termStart;
         this.termEnd = termEnd;
+        this.userID = userID;
     }
 
     public Term() {
@@ -53,4 +56,8 @@ public class Term {
     public void setTermEnd(String termEnd) {
         this.termEnd = termEnd;
     }
+
+    public int getUserID() {return userID;}
+
+    public void setUserID(int userID) {this.userID = userID;}
 }

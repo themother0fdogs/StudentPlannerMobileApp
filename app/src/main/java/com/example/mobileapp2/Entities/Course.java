@@ -21,8 +21,10 @@ public class Course {
 
     private String optionalNotes;
 
+    private int userID;
 
-    public Course(int courseID, String courseName, String courseStart, String courseEnd, String progressStatus, String instructorName, String instructorPhone, String instructorEmail, int termID, String optionalNotes) {
+
+    public Course(int courseID, String courseName, String courseStart, String courseEnd, String progressStatus, String instructorName, String instructorPhone, String instructorEmail, int termID, String optionalNotes, int userID) {
         this.courseID = courseID;
         this.courseName = courseName;
         this.courseStart = courseStart;
@@ -33,6 +35,7 @@ public class Course {
         this.instructorEmail = instructorEmail;
         this.termID = termID;
         this.optionalNotes = optionalNotes;
+        this.userID = userID;
     }
 
     public Course() {
@@ -114,6 +117,14 @@ public class Course {
 
     public void setOptionalNotes(String optionalNotes) {
         this.optionalNotes = optionalNotes;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     @Override

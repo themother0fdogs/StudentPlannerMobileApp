@@ -16,7 +16,7 @@
             android:name=".UI.AssessmentList"
             android:label="List of Registered Assessments"
             android:exported="false"
-            android:parentActivityName=".UI.TermsList">
+            android:parentActivityName=".UI.TermDetails">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -40,7 +40,7 @@
             android:name=".UI.TermsList"
             android:exported="false"
             android:label="Terms List"
-            android:parentActivityName=".UI.MainActivity">
+           >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -49,7 +49,8 @@
             android:name=".UI.TermDetails"
             android:exported="false"
             android:label="Details of Term"
-            android:parentActivityName=".UI.TermsList">
+            android:parentActivityName=".UI.TermDetails"
+           >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -73,7 +74,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".UI.MainActivity"
+            android:name=".UI.UserLogin"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

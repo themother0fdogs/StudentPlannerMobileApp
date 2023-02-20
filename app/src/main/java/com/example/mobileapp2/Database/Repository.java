@@ -5,9 +5,11 @@ import android.app.Application;
 import com.example.mobileapp2.DAO.AssessmentDAO;
 import com.example.mobileapp2.DAO.CourseDAO;
 import com.example.mobileapp2.DAO.TermDAO;
+import com.example.mobileapp2.DAO.UsersDAO;
 import com.example.mobileapp2.Entities.Assessment;
 import com.example.mobileapp2.Entities.Course;
 import com.example.mobileapp2.Entities.Term;
+import com.example.mobileapp2.Entities.Users;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -17,11 +19,16 @@ public class Repository {
     private CourseDAO mCourseDAO;
     private TermDAO mTermDAO;
     private AssessmentDAO mAssessmentDAO;
+    private UsersDAO mUsersDAO;
+
     private List<Course> mAlLCourses;
     private List<Course>mAlLMatchingCourses;
     private List<Term> mAllTerms;
+    private List<Term> mAllAssociatedTerms;
     private List<Assessment> mAllAssessments;
-    private List<Course>mAlLMatchingAssessments;
+    private List<Assessment>mAlLMatchingAssessments;
+    private List<Users> mAllUsers;
+    private boolean mValidate;
 
     private static int NUMBER_OF_THREADS =4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
@@ -30,7 +37,45 @@ public class Repository {
         mCourseDAO=db.courseDAO();
         mTermDAO=db.termDAO();
         mAssessmentDAO=db.assessmentDAO();
+        mUsersDAO=db.usersDAO();
     }
+
+    //Users
+    public List<Users> getAllUsers(){
+        databaseExecutor.execute(()->{
+            mAllUsers=mUsersDAO.getAllUsers();
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllUsers;
+    }
+
+    public boolean validate(String username, String password) {
+        databaseExecutor.execute(() -> {
+            mValidate = mUsersDAO.validate(username, password);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mValidate;
+    }
+
+    public void insert(Users user){
+        databaseExecutor.execute(()->{
+            mUsersDAO.insert(user);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     //Terms
     public List<Term> getAllTerms(){
@@ -78,6 +123,18 @@ public class Repository {
         }
     }
 
+    public List<Term> getAllAssociatedTerms(int userID){
+        databaseExecutor.execute(()->{
+            mAllAssociatedTerms=mTermDAO.getAllAssociatedTerms(userID);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllAssociatedTerms;
+    }
+
     //Courses
     public List<Course> getAllCourses(){
         databaseExecutor.execute(()->{
@@ -103,9 +160,9 @@ public class Repository {
         return mAlLMatchingCourses;
     }
 
-    public List<Course> getAllAssociatedAssessments(int courseID){
+    public List<Assessment> getAllAssociatedAssessments(int courseID){
         databaseExecutor.execute(()->{
-            mAlLMatchingAssessments=mCourseDAO.getAllAssociatedAssessments(courseID);
+            mAlLMatchingAssessments=mAssessmentDAO.getAllAssociatedAssessments(courseID);
         });
         try {
             Thread.sleep(1000);
@@ -147,8 +204,6 @@ public class Repository {
             e.printStackTrace();
         }
     }
-
-
 
     //Assessments
     public List<Assessment> getAllAssessments(){

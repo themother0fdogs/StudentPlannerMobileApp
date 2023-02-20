@@ -43,8 +43,10 @@ public class TermDetails extends AppCompatActivity {
     String termStart;
     String termEnd;
     int termID;
+    int userID;
     Term term;
     Repository repository;
+
 
     Term current;
     int num;
@@ -74,6 +76,9 @@ public class TermDetails extends AppCompatActivity {
         termStart= getIntent().getStringExtra("termStart");
         termEnd= getIntent().getStringExtra("termEnd");
         termID= getIntent().getIntExtra("termID", -1);
+        //userID = getIntent().getIntExtra("userID", -1);
+        userID = Integer.parseInt(getIntent().getExtras().get("userID").toString());
+
 
         editTermName.setText(termName);
         editTermStart.setText(termStart);
@@ -108,11 +113,11 @@ public class TermDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(termID==-1){
-                    term= new Term(0, editTermName.getText().toString(), editTermStart.getText().toString(), editTermEnd.getText().toString());
+                    term= new Term(0, editTermName.getText().toString(), editTermStart.getText().toString(), editTermEnd.getText().toString(), userID);
                     repository.insert(term);
                 }
                 else{
-                    term= new Term(termID, editTermName.getText().toString(), editTermStart.getText().toString(), editTermEnd.getText().toString());
+                    term= new Term(termID, editTermName.getText().toString(), editTermStart.getText().toString(), editTermEnd.getText().toString(), userID);
                     repository.update(term);
                 }
                 finish();
@@ -220,6 +225,7 @@ public class TermDetails extends AppCompatActivity {
                     if (termID == term.getTermID() )
                         current = term;
                 }
+
                 num = 0;
                 for(Course course: repository.getAllCourses()){
                     if(course.getTermID()==termID) ++num;
@@ -237,6 +243,7 @@ public class TermDetails extends AppCompatActivity {
             case R.id.addcourse:
                 Intent intent = new Intent(TermDetails.this, CourseDetails.class);
                 intent.putExtra("termID", termID);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

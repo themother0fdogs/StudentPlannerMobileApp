@@ -10,15 +10,18 @@ import com.example.mobileapp2.Database.Repository;
 import com.example.mobileapp2.Entities.Assessment;
 import com.example.mobileapp2.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AssessmentList extends AppCompatActivity {
     private Repository repository;
+    int userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_list);
+        userID = Integer.parseInt(getIntent().getExtras().get("userID").toString());
 
         //recyclerview of assessments
         RecyclerView recyclerView=findViewById(R.id.allAssessmentsRecyclerview);
@@ -26,8 +29,12 @@ public class AssessmentList extends AppCompatActivity {
         final AllAssessmentAdapter assessmentAdapter= new AllAssessmentAdapter(this);
         recyclerView.setAdapter(assessmentAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<Assessment> allAssessments = repository.getAllAssessments();
-        assessmentAdapter.setAssessments(allAssessments);
+        List<Assessment> refresh = new ArrayList<>();
+        for(Assessment assessment: repository.getAllAssessments())
+            if(assessment.getUserID() == userID){
+                refresh.add(assessment);
+            }
+        assessmentAdapter.setAssessments(refresh);
 
     }
 }

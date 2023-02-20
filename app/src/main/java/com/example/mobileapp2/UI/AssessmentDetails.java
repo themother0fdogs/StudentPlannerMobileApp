@@ -51,6 +51,8 @@ public class AssessmentDetails extends AppCompatActivity {
     String assessmentType;
     int courseID;
 
+    int userID;
+
     Assessment assessment;
     Repository repository;
     Assessment current;
@@ -77,6 +79,9 @@ public class AssessmentDetails extends AppCompatActivity {
         assessmentType = getIntent().getStringExtra("assessmentType");
         assessmentID= getIntent().getIntExtra("assessmentID", -1);
         courseID = Integer.parseInt(getIntent().getExtras().get("courseID").toString());
+
+        userID = Integer.parseInt(getIntent().getExtras().get("userID").toString());
+
 
         editAssessmentName.setText(assessmentName);
         editAssessmentStart.setText(start);
@@ -105,11 +110,11 @@ public class AssessmentDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(assessmentID == -1){
-                    assessment  = new Assessment(0, editAssessmentName.getText().toString(), typeSpinner.getSelectedItem().toString(), editAssessmentStart.getText().toString(), editAssessmentEnd.getText().toString(), courseID);
+                    assessment  = new Assessment(0, editAssessmentName.getText().toString(), typeSpinner.getSelectedItem().toString(), editAssessmentStart.getText().toString(), editAssessmentEnd.getText().toString(), courseID, userID);
                     repository.insert(assessment);
                 }
                 else{
-                    assessment  = new Assessment(assessmentID, editAssessmentName.getText().toString(), typeSpinner.getSelectedItem().toString(), editAssessmentStart.getText().toString(), editAssessmentEnd.getText().toString(), courseID);
+                    assessment  = new Assessment(assessmentID, editAssessmentName.getText().toString(), typeSpinner.getSelectedItem().toString(), editAssessmentStart.getText().toString(), editAssessmentEnd.getText().toString(), courseID, userID);
                     repository.update(assessment);
                 }
                 finish();
@@ -229,7 +234,7 @@ public class AssessmentDetails extends AppCompatActivity {
                 Long trigger = notifystart.getTime();
                 Intent intentStart = new Intent(AssessmentDetails.this, MyReceiver.class);
                 intentStart.putExtra("key", assessmentName + " assessment is starting on: " + startDateString);
-                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, ++MainActivity.numAlert, intentStart, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, ++UserLogin.numAlert, intentStart, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;
@@ -248,7 +253,7 @@ public class AssessmentDetails extends AppCompatActivity {
                 Long trigger2 = notifyend.getTime();
                 Intent intentEnd = new Intent(AssessmentDetails.this, MyReceiver.class);
                 intentEnd.putExtra("key", assessmentName + " assessment is ending on: " + endDateString);
-                PendingIntent sender2 = PendingIntent.getBroadcast(AssessmentDetails.this, ++MainActivity.numAlert, intentEnd, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent sender2 = PendingIntent.getBroadcast(AssessmentDetails.this, ++UserLogin.numAlert, intentEnd, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager2.set(AlarmManager.RTC_WAKEUP, trigger2, sender2);
                 return true;

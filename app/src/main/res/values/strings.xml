@@ -10,4 +10,6 @@
     <string name="delete_assessment">Delete Assessment</string>
     <string name="add_course">Add Course</string>
     <string name="delete_term">Delete Term</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
 </resources>
