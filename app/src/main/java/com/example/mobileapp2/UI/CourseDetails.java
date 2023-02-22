@@ -266,13 +266,18 @@ public class CourseDetails extends AppCompatActivity {
 
             case R.id.deletecourse:
                 for(Course course: repository.getAllCourses()) {
-                    if (course.getCourseID() == courseID){
-                        current = course;}
+                    if (courseID == course.getCourseID())
+                        current = course;
+                }
                 num =0;
                     for(Assessment assessment : repository.getAllAssessments()){
-                    if(assessment.getCourseID()==courseID)
-                    ++num;}
+                    if(assessment.getCourseID()==courseID) ++num;
+                    }
+                for(Term termname: repository.getAllTerms()){
+                    if(termname.getTermID()==termID){
+                        currentTerm= termname;}
                 }
+
                 if (num ==0){
                     repository.delete(current);
                     Toast.makeText(CourseDetails.this, current.getCourseName() + " deleted from " + currentTerm.getTermName(), Toast.LENGTH_LONG).show();

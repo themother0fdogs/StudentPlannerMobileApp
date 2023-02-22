@@ -55,7 +55,7 @@ public class UserLogin extends AppCompatActivity {
                         if (nameString.equals(users.getUsername())){
                             int userid = users.getUserID();
                         Intent intent = new Intent(UserLogin.this, TermsList.class);
-                        intent.putExtra("userID", userid); //maybe needs to be added?
+                        intent.putExtra("userID", userid);
                         startActivity(intent);
                         }
                     }
