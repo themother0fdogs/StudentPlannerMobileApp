@@ -1,8 +1,10 @@
 # StudentPlannerMobileApp
 TITLE: 
+
 Student Planner Mobile App
 
 PURPOSE:
+
 This is an Android Mobile Application of a student degree planner. The purpose of this application is to allow students 
 to have a degree planner at their fingertips. There are planners
 and apps for planning daily activities or tracking diets, but not many are specifically for degree planning.
@@ -36,8 +38,11 @@ The current data associated with each user/UserID is also added in this project 
 based on the login user credentials.
 
 TOOLS:
+
 Android Studio Dolphin
+
 SQLite
+
 My application was developed under the minimum SDK 26 and the target SDK 32. 
 With the minimum SDK version of 26, its target compatibility would be with Java 8; therefore, it requires Java 8 or higher to run properly.
 To develop my application, I used the Pixel 5 API 32 emulator to test the application in units.
