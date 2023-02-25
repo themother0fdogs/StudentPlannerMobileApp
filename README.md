@@ -27,7 +27,7 @@ and assessments, the details of those lists contain the name of the course or as
 start date in ascending order. The course list screen includes a search bar for users to filter through the list.
 
 The application will include options for the student to input information about their terms, courses,
-and assessments. The application will also allow students to set alerts of start and end dates for courses and assessnebts that they want to
+and assessments. The application will also allow students to set alerts of start and end dates for courses and assessments that they want to
 track and an option to add and share notes of the courses they are taking. The share notes options allows students to send saved notes from the appliation
 through text messages, a Google Drive, e-mail, or Bluetooth.
 
