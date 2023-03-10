@@ -1,4 +1,6 @@
 # StudentPlannerMobileApp
+Link to Demonstration of Project : https://lynhcasidy.com/mobileapp.html
+
 TITLE: 
 
 Student Planner Mobile App
@@ -46,3 +48,5 @@ SQLite
 My application was developed under the minimum SDK 26 and the target SDK 32. 
 With the minimum SDK version of 26, its target compatibility would be with Java 8; therefore, it requires Java 8 or higher to run properly.
 To develop my application, I used the Pixel 5 API 32 emulator to test the application in units.
+
+
